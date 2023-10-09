@@ -39,3 +39,13 @@ class TestCls(unittest.TestCase):
         next_data = stack.pop()
         self.assertEqual(next_data, 'test1')
         self.assertEqual(stack.next_node, None)
+
+    def test_str(self):
+        ''' Проверить вызов str '''
+        stack = Stack()
+        self.assertEqual(str(stack), 'None -> None')
+        stack.push('Test1')
+        self.assertEqual(str(stack), "'Test1' -> None")
+        stack.push('Test2')
+        stack.push('Test4')
+        self.assertEqual(str(stack), "'Test4' -> 'Test2'")

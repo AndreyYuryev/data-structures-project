@@ -1,7 +1,7 @@
 class Node:
-    """
+    '''
     Класс для узла стека
-    """
+    '''
 
     def __init__(self, data, next_node=None):
         """
@@ -53,3 +53,12 @@ class Stack:
         if next_data is not None:
             self.next_node = next_data.next_node
         return pop_data.data
+
+    def __str__(self):
+        ''' Представление '''
+        if self.top is not None and self.next_node is not None:
+            return f"'{self.top.data}' -> '{self.next_node.data}'"
+        elif self.top is not None and self.next_node is None:
+            return f"'{self.top.data}' -> None"
+        else:
+            return 'None -> None'
