@@ -41,7 +41,6 @@ class TestCls(unittest.TestCase):
             print(queue.tail.next_node.data)
         # AttributeError: 'NoneType' object has no attribute 'data'
 
-
     def test_dequeue(self):
         # Создаем пустую очередь
         queue = Queue()
