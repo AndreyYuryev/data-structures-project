@@ -30,13 +30,12 @@ class Queue:
             self.head = new_node
             self.tail = new_node
         elif self.head == self.tail:
-            new_node = self.tail
-            self.head.next_node = new_node
             self.tail = Node(data, None)
+            self.head.next_node = self.tail
         else:
-            new_node = self.tail
-            self.head.next_node = new_node
-            self.tail = Node(data, None)
+            new_node = Node(data, None)
+            self.tail.next_node = new_node
+            self.tail = new_node
 
     def dequeue(self):
         """
@@ -44,7 +43,20 @@ class Queue:
 
         :return: данные удаленного элемента
         """
-        return
+        data = ''
+        if self.head is not None:
+            if self.head == self.tail:
+                data = self.head.data
+                self.head = None
+                self.tail = None
+            elif self.head.next_node == self.tail:
+                data = self.head.data
+                self.head = self.tail
+            else:
+                data = self.head.data
+                self.head = self.head.next_node
+            return data
+        return None
 
     def __str__(self):
         """Магический метод для строкового представления объекта"""
@@ -57,7 +69,4 @@ class Queue:
                 str_queue += '\n'
                 str_queue += node.data
                 node = node.next_node
-            if self.head != self.tail:
-                str_queue += '\n'
-                str_queue += self.tail.data
         return str_queue
